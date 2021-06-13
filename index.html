@@ -24,43 +24,39 @@
         </style>
 	<script type="text/javascript">
 			//init object globally
-			var objImage= null;
-			function init(){
-				objImage=document.getElementById("image1");				
-				objImage.style.position='relative';
-				objImage.style.left='0px';
-				objImage.style.top='0px';
-			}
-			function getKeyAndMove(e){				
-				var key_code=e.which||e.keyCode;
-				switch(key_code){
-					case 37: //left arrow key
-						moveLeft();
-						break;
-					case 38: //Up arrow key
-						moveUp();
-						break;
-					case 39: //right arrow key
-						moveRight();
-						break;
-					case 40: //down arrow key
-						moveDown();
-						break;						
-				}
-			}
-			function moveLeft(){
-				objImage.style.left=parseInt(objImage.style.left)-5 +'px';
-			}
-			function moveUp(){
-				objImage.style.top=parseInt(objImage.style.top)-5 +'px';
-			}
-			function moveRight(){
-				objImage.style.left=parseInt(objImage.style.left)+5 +'px';
-			}
-			function moveDown(){
-				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
-			}
-			window.onload=init;
+			var dog = document.getElementById("dogPic");
+var cat = document.getElementById("image1");
+var moving = false;
+
+dog.addEventListener("mousedown", initialClick, false);
+cat.addEventListener("mousedown", initialClick, false);
+
+
+function move(e){
+
+  var newX = e.clientX - 10;
+  var newY = e.clientY - 10;
+
+  image.style.left = newX + "px";
+  image.style.top = newY + "px";
+
+  
+}
+
+function initialClick(e) {
+
+  if(moving){
+    document.removeEventListener("mousemove", move);
+    moving = !moving;
+    return;
+  }
+  
+  moving = !moving;
+  image = this;
+
+  document.addEventListener("mousemove", move, false);
+
+}
 	      </script>
   </head>
   <body>
@@ -68,9 +64,7 @@
       <!-- <div id="morebuttons"></div>
         <a href="/recipes"><center><button class="navbutton" id="recipes">Possible Recipes</button></center></a>
       <div id="evenmorespaceforbackground"></div> -->
-  </body>
-	  <body onkeydown='getKeyAndMove(event)'>
-		<img id="image1" src="smallernose.jpg" width = "65" height = "65"/>
-	</body>
+  <div id="image1"></div>
+<div id="image1"></div>
     <!-- </div> -->
 </html>
