@@ -2,7 +2,7 @@
 	//init object globally
 	var objImage= null;
 	function init(){
-		objImage=document.getElementById("Picture1");
+		objImage=document.getElementById("/main/Picture1");
 		objImage.style.position='relative';
 		objImage.style.left='10px';
 		objImage.style.top='10px';
