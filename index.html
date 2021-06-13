@@ -24,49 +24,65 @@
         </style>
 	      <div id="mydiv">
 	<script type="text/javascript">
-			dragElement(document.getElementById("mydiv"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById(elmnt.id + "header")) {
-    // if present, the header is where you move the DIV from:
-    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-  } else {
-    // otherwise, move the DIV from anywhere inside the DIV:
-    elmnt.onmousedown = dragMouseDown;
+			function startDrag(e) {
+  // determine event object
+  if (!e) {
+    var e = window.event;
   }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
+  // IE uses srcElement, others use target
+  var targ = e.target ? e.target : e.srcElement;
 
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-  }
+  if (targ.className != 'dragme') {
+    return
+  };
+  // calculate event X, Y coordinates
+  offsetX = e.clientX;
+  offsetY = e.clientY;
 
-  function closeDragElement() {
-    // stop moving when mouse button is released:
-    document.onmouseup = null;
-    document.onmousemove = null;
-  }
+  // assign default values for top and left properties
+  if (!targ.style.left) {
+    targ.style.left = '0px'
+  };
+  if (!targ.style.top) {
+    targ.style.top = '0px'
+  };
+
+  // calculate integer values for top and left 
+  // properties
+  coordX = parseInt(targ.style.left);
+  coordY = parseInt(targ.style.top);
+  drag = true;
+
+  // move div element
+  document.onmousemove = dragDiv;
+}
+
+function dragDiv(e) {
+  if (!drag) {
+    return
+  };
+  if (!e) {
+    var e = window.event
+  };
+  var targ = e.target ? e.target : e.srcElement;
+  // move div element
+  targ.style.left = coordX + e.clientX - offsetX + 'px';
+  targ.style.top = coordY + e.clientY - offsetY + 'px';
+  return false;
+}
+
+function stopDrag() {
+  drag = false;
+	return false;
+}
+window.onload = function() {
+  document.onmousedown = startDrag;
+  document.onmouseup = stopDrag;
 }
 		</script>
+		     <div id="draggable" class="dragme">"Hello World!"</div>
+<img src="Picture1.jpg" alt="drag-and-drop image script" title="drag-and-drop image script" class="dragme">
   </head>
   <body>
     <div id="top"></div>
