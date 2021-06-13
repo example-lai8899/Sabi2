@@ -62,6 +62,39 @@
 			}
 			window.onload=init;
 		</script>
+	      var dog = document.getElementById("image1");
+var cat = document.getElementById("image1");
+var moving = false;
+
+dog.addEventListener("mousedown", initialClick, false);
+cat.addEventListener("mousedown", initialClick, false);
+
+
+function move(e){
+
+  var newX = e.clientX - 10;
+  var newY = e.clientY - 10;
+
+  image.style.left = newX + "px";
+  image.style.top = newY + "px";
+
+  
+}
+
+function initialClick(e) {
+
+  if(moving){
+    document.removeEventListener("mousemove", move);
+    moving = !moving;
+    return;
+  }
+  
+  moving = !moving;
+  image = this;
+
+  document.addEventListener("mousemove", move, false);
+
+}
   </head>
   <body>
     <div id="top"></div>
