@@ -23,45 +23,45 @@
                 }
         </style>
 	<script type="text/javascript">
-			//init object globally
-			var objImage= null;
-			function init(){
-				objImage=document.getElementById("image1");
-				objImage.style.position='relative';
-				objImage.style.left='0px';
-				objImage.style.top='0px';
-			}
-			function getKeyAndMove(e){
-				var key_code=e.which||e.keyCode;
-				switch(key_code){
-					case 37: //left arrow key
-						moveLeft();
-						break;
-					case 38: //Up arrow key
-						moveUp();
-						break;
-					case 39: //right arrow key
-						moveRight();
-						break;
-					case 40: //down arrow key
-						moveDown();
-						break;
-				}
-			}
-			function moveLeft(){
-				objImage.style.left=parseInt(objImage.style.left)-5 +'px';
-			}
-			function moveUp(){
-				objImage.style.top=parseInt(objImage.style.top)-5 +'px';
-			}
-			function moveRight(){
-				objImage.style.left=parseInt(objImage.style.left)+5 +'px';
-			}
-			function moveDown(){
-				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
-			}
-			window.onload=init;
-		</script>
+ 
+document.onmousemove = moveIt;
+ 
+  function moveIt(evnt)
+ {
+if( !evnt )
+evnt = window.event;
+ 
+var x = evnt.clientX;
+var y = evnt.clientY;
+ 
+var kids = document.getElementById("kids").style;
+ 
+kids.top = x + "px";
+kids.left = y  + "px";
+ 
+document.getElementById("x").innerHTML = x;
+document.getElementById("y").innerHTML = y;
+ 
+ 
+ }
+ 
+ </script>
+ </head>
+ <body>
+X:<span id="x"></span><br />
+Y:<span id="y"></span>
+<!--
+<form>
+X axis: <input type="text" id="x"><br />
+Y axis: <input type="text" id="y"><br />
+<input type="button" value=" Move " onclick="moveIt()" >
+</form>
+-->
+<div id="kids">
+ <img 
+ src="Picture1.jpg" 
+ width="220" height="42">
+</div>
   </head>
   <body>
     <div id="top"></div>
