@@ -30,6 +30,10 @@
 				objImage.style.position='relative';
 				objImage.style.left='0px';
 				objImage.style.top='0px';
+				objImage2=document.getElementById("image2");				
+				objImage2.style.position='relative';
+				objImage2.style.left='0px';
+				objImage2.style.top='0px'; 
 			}
 			function getKeyAndMove(e){				
 				var key_code=e.which||e.keyCode;
@@ -45,7 +49,20 @@
 						break;
 					case 40: //down arrow key
 						moveDown();
-						break;						
+						break;
+					case 65: //a key
+						moveLeft2();
+						break;
+					case 87: //w key
+						moveUp2();
+						break;
+					case 68: //d key
+						moveRight2();
+						break;
+					case 83 //s key
+						moveDown2();
+						break;
+					
 				}
 			}
 			function moveLeft(){
@@ -60,6 +77,18 @@
 			function moveDown(){
 				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
 			}
+			function moveLeft2(){
+				objImage2.style.left=parseInt(objImage2.style.left)-5 +'px';
+			}
+			function moveUp2(){
+				objImage2.style.top=parseInt(objImage2.style.top)-5 +'px';
+			}
+			function moveRight2(){
+				objImage2.style.left=parseInt(objImage2.style.left)+5 +'px';
+			}
+			function moveDown2(){
+				objImage2.style.top=parseInt(objImage2.style.top)+5 +'px';
+			}
 			window.onload=init;
 		</script>
   </head>
@@ -71,6 +100,7 @@
   </body>
 	  <body onkeydown='getKeyAndMove(event)'>
 		<img id="image1" src="smallernose.jpg" width = "65" height = "65"/>
+		<img id="image2" src="smallernose.jpg" width = "65" height = "65"/>
 	</body>
     <!-- </div> -->
 </html>
