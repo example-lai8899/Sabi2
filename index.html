@@ -26,6 +26,7 @@
 			//init object globally
 			var objImage= null;
 			var objImage2 = null;
+			var objImage3 = null;
 			function init(){
 				objImage=document.getElementById("image1");				
 				objImage.style.position='relative';
@@ -35,6 +36,10 @@
 				objImage2.style.position='relative';
 				objImage2.style.left='0px';
 				objImage2.style.top='0px';
+				objImage3=document.getElementById("image3");				
+				objImage3.style.position='relative';
+				objImage3.style.left='0px';
+				objImage3.style.top='0px';
 				
 			}
 			function getKeyAndMove(e){				
@@ -58,12 +63,25 @@
 					case 68: //d key
 						moveRight2();
 						break;
+					case 73: //i key
+						moveUp3();
+						break;
+					case 74: //j key
+						moveLeft3();
+						break;
+					case 75: //k key
+						moveDown3();
+						break;
+					case 76: //l key
+						moveRight3();
+						break;
 					case 83: //s key
 						moveDown2();
 						break;
 					case 87: //w key
 						moveUp2();
 						break;
+					
 					
 					
 					
@@ -93,6 +111,18 @@
 			function moveDown2(){
 				objImage2.style.top=parseInt(objImage2.style.top)+5 +'px';
 			}
+			function moveLeft3(){
+				objImage3.style.left=parseInt(objImage3.style.left)-5 +'px';
+			}
+			function moveUp3(){
+				objImage3.style.top=parseInt(objImage3.style.top)-5 +'px';
+			}
+			function moveRight3(){
+				objImage3.style.left=parseInt(objImage3.style.left)+5 +'px';
+			}
+			function moveDown3(){
+				objImage3.style.top=parseInt(objImage3.style.top)+5 +'px';
+			}
 			window.onload=init;
 		</script>
   </head>
@@ -105,6 +135,7 @@
 	  <body onkeydown='getKeyAndMove(event)'>
 		<img id="image1" src="nose.png" width = "65" height = "65"/>
 		<img id="image2" src="ears.png" width = "300" height = "140"/>
+		<img id="image3" src="scarf.png" width = "300" height = "140"/>
 	</body>
     <!-- </div> -->
 </html>
