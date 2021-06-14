@@ -31,6 +31,10 @@
 				objImage.style.position='relative';
 				objImage.style.left='0px';
 				objImage.style.top='0px';
+				objImage=document.getElementById("image2");				
+				objImage.style.position='relative';
+				objImage.style.left='0px';
+				objImage.style.top='0px';
 				
 			}
 			function getKeyAndMove(e){				
@@ -51,15 +55,17 @@
 					case 65: //a key
 						moveLeft2();
 						break;
-					case 87: //w key
-						moveUp2();
-						break;
 					case 68: //d key
 						moveRight2();
 						break;
 					case 83 //s key
 						moveDown2();
 						break;
+					case 87: //w key
+						moveUp2();
+						break;
+					
+					
 					
 				}
 			}
