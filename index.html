@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pin the Nose on Mr. Annoying</title>
+	  <title>Decorate Mr. Reindeer</title>
     <link type="text/css" rel="stylesheet" href="Homepage.css">
     <link href="https://fonts.googleapis.com/css?family=Bungee+Inline&display=swap" rel="stylesheet">
   </head>
@@ -22,86 +22,34 @@
             /* background-size: cover; */
                 }
         </style>
-	      <div id="mydiv">
-	  <style>
-    .dragme{
-			position:relative;
-			width: 100px;
-			height: 90px;
-			cursor: move;
-		}
-
-  </style>
-</head>
-
-<body>
-
-<div id="draggable" class="dragme"></div>
-<img src="https://lh4.googleusercontent.com/-8tqTFxi2ebU/Ufo4j_thf7I/AAAAAAAADFM/_ZBQctm9e8E/w270-h203-no/flower.jpg" alt="drag-and-drop image script" 
-	title="drag-and-drop image script" class="dragme"><img src="https://lh4.googleusercontent.com/-8tqTFxi2ebU/Ufo4j_thf7I/AAAAAAAADFM/_ZBQctm9e8E/w270-h203-no/flower.jpg" alt="drag-and-drop image script" 
-	title="drag-and-drop image script" class="dragme"><img src="https://lh4.googleusercontent.com/-8tqTFxi2ebU/Ufo4j_thf7I/AAAAAAAADFM/_ZBQctm9e8E/w270-h203-no/flower.jpg" alt="drag-and-drop image script" 
-	title="drag-and-drop image script" class="dragme"><img src="Picture1.jpg" 
-	 class="dragme"><img src="Picture1.jpg" 
-	title="drag-and-drop image script" width = "65" height = "65" class="dragme"><img src="Picture1.jpg" alt="drag-and-drop image script" 
-	title="drag-and-drop image script" width = "65" height = "65" class="dragme"></div>
-
-  <script>
-    function startDrag(e) {
-				// determine event object
-				if (!e) {
-					var e = window.event;
-				}
-                if(e.preventDefault) e.preventDefault();
-
-				// IE uses srcElement, others use target
-				var targ = e.target ? e.target : e.srcElement;
-
-				if (targ.className != 'dragme') {return};
-				// calculate event X, Y coordinates
-					offsetX = e.clientX;
-					offsetY = e.clientY;
-
-				// assign default values for top and left properties
-				if(!targ.style.left) { targ.style.left='0px'};
-				if (!targ.style.top) { targ.style.top='0px'};
-
-				// calculate integer values for top and left 
-				// properties
-				coordX = parseInt(targ.style.left);
-				coordY = parseInt(targ.style.top);
-				drag = true;
-
-				// move div element
-					document.onmousemove=dragDiv;
-                return false;
-				
+	<script type="text/javascript">
+			//init object globally
+			var objImage= null;
+			function init(){
 			}
-			function dragDiv(e) {
-				if (!drag) {return};
-				if (!e) { var e= window.event};
-				var targ=e.target?e.target:e.srcElement;
-				// move div element
-				targ.style.left=coordX+e.clientX-offsetX+'px';
-				targ.style.top=coordY+e.clientY-offsetY+'px';
-				return false;
+			function moveLeft(){
+				objImage.style.left=parseInt(objImage.style.left)-5 +'px';
 			}
-			function stopDrag() {
-				drag=false;
+			function moveUp(){
+				objImage.style.top=parseInt(objImage.style.top)-5 +'px';
 			}
-			window.onload = function() {
-				document.onmousedown = startDrag;
-				document.onmouseup = stopDrag;
+			function moveRight(){
+				objImage.style.left=parseInt(objImage.style.left)+5 +'px';
 			}
-  </script>
-
-		     
+			function moveDown(){
+				objImage.style.top=parseInt(objImage.style.top)+5 +'px';
+			}
+			window.onload=init;
+		</script>
+  </head>
   <body>
     <div id="top"></div>
       <!-- <div id="morebuttons"></div>
         <a href="/recipes"><center><button class="navbutton" id="recipes">Possible Recipes</button></center></a>
       <div id="evenmorespaceforbackground"></div> -->
   </body>
-		     
-	  
+	  <body onkeydown='getKeyAndMove(event)'>
+		<img id="image1" src="Picture1.jpg" />
+	</body>
     <!-- </div> -->
 </html>
